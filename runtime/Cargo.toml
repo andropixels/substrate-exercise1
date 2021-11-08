@@ -26,7 +26,9 @@ runtime-benchmarks = [
     'pallet-template/runtime-benchmarks',
     'pallet-timestamp/runtime-benchmarks',
     'sp-runtime/runtime-benchmarks',
+    'pallet-kitties/runtime-benchmarks',
 ]
+
 std = [
     'codec/std',
     'frame-executive/std',
@@ -39,6 +41,8 @@ std = [
     'pallet-randomness-collective-flip/std',
     'pallet-sudo/std',
     'pallet-template/std',
+    'pallet-kitties/std',
+    'pallet-dex/std',
     'pallet-timestamp/std',
     'pallet-transaction-payment-rpc-runtime-api/std',
     'pallet-transaction-payment/std',
@@ -53,6 +57,8 @@ std = [
     'sp-std/std',
     'sp-transaction-pool/std',
     'sp-version/std',
+    'orml-nft/std',
+
 ]
 [dependencies.codec]
 default-features = false
@@ -137,11 +143,23 @@ default-features = false
 path = '../pallets/template'
 version = '3.0.0'
 
+[dependencies.pallet-kitties]
+default-features = false
+path = '../pallets/kitties'
+
+
+[dependencies.pallet-dex]
+default-features = false
+path = '../pallets/dex'
+
+
 [dependencies.pallet-timestamp]
 default-features = false
 git = 'https://github.com/paritytech/substrate.git'
 branch = 'polkadot-v0.9.8'
 version = '3.0.0'
+
+
 
 [dependencies.pallet-transaction-payment]
 default-features = false
@@ -220,3 +238,8 @@ default-features = false
 git = 'https://github.com/paritytech/substrate.git'
 branch = 'polkadot-v0.9.8'
 version = '3.0.0'
+
+[dependencies.orml-nft]
+default-features = false
+git = 'https://github.com/open-web3-stack/open-runtime-module-library.git'
+rev = '8f0d824fb33e6430282453e45c4a64b89dc5a44a'

@@ -1,0 +1,96 @@
+[package]
+name = 'pallet-dex'
+version = '0.1.0'
+authors = ['Rahul-Navgire']
+edition = '2018'
+
+
+
+# [dependencies.sp-io]
+# default-features = false
+# git = 'https://github.com/paritytech/substrate.git'
+# tag = 'monthly-2021-10'
+# version = '4.0.0-dev'
+[dependencies.codec]
+default-features = false
+features = ['derive']
+package = 'parity-scale-codec'
+version = '2.0.0'
+
+# [dependencies.frame-benchmarking]
+# default-features = false
+# git = 'https://github.com/paritytech/substrate.git'
+# optional = true
+# branch = 'polkadot-v0.9.8'
+# version = '3.1.0'
+
+[dependencies.pallet-timestamp]
+default-features=false
+ git = "https://github.com/paritytech/substrate"
+
+[dependencies.frame-support]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = 'polkadot-v0.9.8'
+
+[dependencies.frame-system]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = 'polkadot-v0.9.8'
+version = '3.0.0'
+
+[dependencies.sp-runtime]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = 'polkadot-v0.9.8'
+# version = '3.0.0'
+
+
+[dependencies.log]
+version="0.4.14"
+default-features =false
+
+
+[dependencies.sp-core]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = 'polkadot-v0.9.8'
+# version = '3.0.0'
+
+[dependencies.sp-std]
+git = 'https://github.com/paritytech/substrate'
+default-features = false
+branch = 'polkadot-v0.9.8'
+# version = '3.0.0'
+
+[dependencies.sp-io]
+default-features = false
+git = 'https://github.com/paritytech/substrate.git'
+branch = 'polkadot-v0.9.8'
+# version = '3.0.0'
+
+
+[dependencies.scale-info]
+version = '1.0'
+default-features = false
+features=["derive"]
+
+
+[features]
+default = ['std']
+
+std = [
+    'codec/std',
+    "log/std",
+    "pallet-timestamp/std",
+    'frame-support/std',
+    'frame-system/std',
+    "scale-info/std",
+     "sp-std/std",
+     "sp-io/std",
+    "sp-runtime/std",
+   "sp-core/std",
+
+
+    
+]

@@ -39,6 +39,8 @@ pub use frame_support::{
 };
 use pallet_transaction_payment::CurrencyAdapter;
 
+mod weights;
+
 /// Import the template pallet.
 pub use pallet_template;
 
@@ -272,6 +274,30 @@ impl pallet_template::Config for Runtime {
 	type Event = Event;
 }
 
+impl pallet_dex::Config for Runtime {
+	
+}
+impl pallet_kitties::Config for Runtime {
+	type Event = Event;
+	type Randomness = RandomnessCollectiveFlip;
+	type Currency = Balances;
+	type WeightInfo = weights::pallet_kitties::WeightInfo<Runtime>;
+}
+
+parameter_types! {
+	pub const MaxClassMetadata: u32 = 0;
+	pub const MaxTokenMetadata: u32 = 0;
+}
+
+impl orml_nft::Config for Runtime {
+	type ClassId = u32;
+	type TokenId = u32;
+	type ClassData = ();
+	type TokenData = pallet_kitties::Kitty;
+	type MaxClassMetadata = MaxClassMetadata;
+	type MaxTokenMetadata = MaxTokenMetadata;
+}
+
 // Create the runtime by composing the FRAME pallets that were previously configured.
 construct_runtime!(
 	pub enum Runtime where
@@ -289,9 +315,13 @@ construct_runtime!(
 		Sudo: pallet_sudo::{Pallet, Call, Config<T>, Storage, Event<T>},
 		// Include the custom logic from the pallet-template in the runtime.
 		TemplateModule: pallet_template::{Pallet, Call, Storage, Event<T>},
+		// Substrate Kitties pallet
+		Kitties: pallet_kitties::{Pallet, Storage, Call, Event<T>, Config},
+		Dex:pallet_dex::{Pallet},
+		Nft: orml_nft::{Pallet, Storage, Config<T>},
 	}
 );
-
+ 
 /// The address format for describing accounts.
 pub type Address = sp_runtime::MultiAddress<AccountId, ()>;
 /// Block header type as expected by this runtime.
@@ -476,6 +506,7 @@ impl_runtime_apis! {
 			add_benchmark!(params, batches, pallet_balances, Balances);
 			add_benchmark!(params, batches, pallet_timestamp, Timestamp);
 			add_benchmark!(params, batches, pallet_template, TemplateModule);
+			add_benchmark!(params, batches, pallet_kitties, Kitties);
 
 			if batches.is_empty() { return Err("Benchmark not found for this pallet.".into()) }
 			Ok(batches)
