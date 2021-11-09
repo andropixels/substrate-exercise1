@@ -4,7 +4,7 @@ members = [
     'pallets/template',
     'pallets/kitties',
     'pallets/dex',
-    'pallets/pallet-token-fungible',
+    'pallets/token-fungible',
     'runtime',
 ]
 [profile.release]
