@@ -27,6 +27,7 @@ runtime-benchmarks = [
     'pallet-timestamp/runtime-benchmarks',
     'sp-runtime/runtime-benchmarks',
     'pallet-kitties/runtime-benchmarks',
+    
 ]
 
 std = [
@@ -43,6 +44,7 @@ std = [
     'pallet-template/std',
     'pallet-kitties/std',
     'pallet-dex/std',
+    'pallet-token-fungible/std',
     'pallet-timestamp/std',
     'pallet-transaction-payment-rpc-runtime-api/std',
     'pallet-transaction-payment/std',
@@ -152,6 +154,9 @@ path = '../pallets/kitties'
 default-features = false
 path = '../pallets/dex'
 
+[dependencies.pallet-token-fungible]
+default-features = false
+path = '../pallets/token-fungible'
 
 [dependencies.pallet-timestamp]
 default-features = false

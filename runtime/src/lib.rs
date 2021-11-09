@@ -274,8 +274,21 @@ impl pallet_template::Config for Runtime {
 	type Event = Event;
 }
 
+impl  pallet_token_fungible::Config for Runtime{
+	type Event = Event;
+	type PalletId = TokenFungiblePalletId;
+	type FungibleTokenId = u32;
+	type StringLimit = StringLimit;
+	type CreateTokenDeposit = CreateTokenDeposit;
+	type Currency = Balances;
+}
+
 impl pallet_dex::Config for Runtime {
-	
+	type Event = Event;
+	type PalletId = ExchangePalletId;
+	type PoolId = u32;
+	type CreatePoolDeposit = CreatePoolDeposit;
+	type Currency = Balances;
 }
 impl pallet_kitties::Config for Runtime {
 	type Event = Event;
@@ -317,8 +330,11 @@ construct_runtime!(
 		TemplateModule: pallet_template::{Pallet, Call, Storage, Event<T>},
 		// Substrate Kitties pallet
 		Kitties: pallet_kitties::{Pallet, Storage, Call, Event<T>, Config},
-		Dex:pallet_dex::{Pallet},
+		//token-fungible pallet
+		TokenFungible: pallet_token_fungible::{Pallet, Call, Storage, Event<T>},
+		Dex:pallet_dex::pallet_dex::{Pallet, Call, Storage, Event<T>},
 		Nft: orml_nft::{Pallet, Storage, Config<T>},
+		
 	}
 );
  
