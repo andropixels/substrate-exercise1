@@ -26,7 +26,9 @@ version = '2.0.0'
 
 [dependencies.pallet-timestamp]
 default-features=false
- git = "https://github.com/paritytech/substrate"
+git = "https://github.com/paritytech/substrate.git"
+version = '3.0.0'
+branch = 'polkadot-v0.9.8'
 
 [dependencies.frame-support]
 default-features = false
@@ -58,7 +60,7 @@ branch = 'polkadot-v0.9.8'
 # version = '3.0.0'
 
 [dependencies.sp-std]
-git = 'https://github.com/paritytech/substrate'
+git = 'https://github.com/paritytech/substrate.git'
 default-features = false
 branch = 'polkadot-v0.9.8'
 # version = '3.0.0'
